@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android App Template</string>
+    <string name="title_action_bar">Android App Template</string>
+
+    <!-- Sample Fragment -->
+    <string name="click_navigate">Click to navigate to next fragment</string>
+
+    <!-- Other Fragment -->
+    <string name="click_pop_backstack">Click to pop backstack</string>
+</resources>
