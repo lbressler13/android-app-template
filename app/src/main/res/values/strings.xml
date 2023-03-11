@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android App Template</string>
+    <string name="title_action_bar">Android App Template</string>
 </resources>

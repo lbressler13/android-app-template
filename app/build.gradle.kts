@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-kapt")
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0" // ktlint
 }
 
@@ -111,30 +112,33 @@ android {
     }
 }
 
+
 dependencies {
+    val kotlinVersion: String by rootProject.extra
+
     val androidxCoreVersion = "1.8.0"
-    val androidxLegacyVersion = "1.0.0"
     val appCompatVersion = "1.4.1"
     val constraintLayoutVersion = "2.1.4"
-    val kotlinUtilsVersion = "0.4.0"
     val lifecycleVersion = "2.5.1"
     val materialVersion = "1.6.1"
     val navigationVersion = "2.5.3"
 
+    val kotlinUtilsVersion = "0.4.0"
+
     val androidxJunitVersion = "1.1.4"
     val androidxTestVersion = "1.5.0"
-    val espressoVersion = "3.5.0"
+    val espressoVersion = "3.4.0"
     val junitVersion = "4.13.2"
 
+    implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
-    implementation("androidx.core:core-ktx:$androidxCoreVersion")
-    implementation("androidx.legacy:legacy-support-v4:$androidxLegacyVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
     implementation("com.google.android.material:material:$materialVersion")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
     implementation("xyz.lbres:kotlin-utils:$kotlinUtilsVersion")
 
     // testing
@@ -143,6 +147,6 @@ dependencies {
     androidTestImplementation("androidx.test:rules:$androidxTestVersion")
     androidTestImplementation("androidx.test:runner:$androidxTestVersion") // needed to run on emulator
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
     androidTestImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
 }
