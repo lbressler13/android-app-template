@@ -112,7 +112,6 @@ android {
     }
 }
 
-
 dependencies {
     val kotlinVersion: String by rootProject.extra
 

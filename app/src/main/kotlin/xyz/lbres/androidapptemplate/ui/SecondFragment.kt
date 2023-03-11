@@ -11,6 +11,9 @@ import xyz.lbres.androidapptemplate.databinding.FragmentSecondBinding
 class SecondFragment : NavHostFragment() {
     private lateinit var binding: FragmentSecondBinding
 
+    /**
+     * Initialize fragment
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSecondBinding.inflate(layoutInflater, container, false)
         binding.popBackstackText.setOnClickListener {

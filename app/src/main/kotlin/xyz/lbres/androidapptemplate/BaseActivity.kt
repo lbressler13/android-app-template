@@ -1,13 +1,19 @@
 package xyz.lbres.androidapptemplate
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import xyz.lbres.androidapptemplate.databinding.ActivityBaseBinding
 
+/**
+ * Activity that contains all functionality of app
+ */
 class BaseActivity : AppCompatActivity() {
     lateinit var binding: ActivityBaseBinding
 
+    /**
+     * Initialize activity
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

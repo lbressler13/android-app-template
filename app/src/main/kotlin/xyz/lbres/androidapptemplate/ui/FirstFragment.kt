@@ -12,6 +12,9 @@ import xyz.lbres.androidapptemplate.databinding.FragmentFirstBinding
 class FirstFragment : NavHostFragment() {
     private lateinit var binding: FragmentFirstBinding
 
+    /**
+     * Initialize fragment
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         binding.navigateText.setOnClickListener {
