@@ -9,6 +9,9 @@ import xyz.lbres.androidapptemplate.BaseActivity
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.databinding.FragmentFirstBinding
 
+/**
+ * Initial fragment in the app
+ */
 class FirstFragment : NavHostFragment() {
     private lateinit var binding: FragmentFirstBinding
 

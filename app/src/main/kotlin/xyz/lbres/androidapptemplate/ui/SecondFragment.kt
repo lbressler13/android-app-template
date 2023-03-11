@@ -8,6 +8,9 @@ import androidx.navigation.fragment.NavHostFragment
 import xyz.lbres.androidapptemplate.BaseActivity
 import xyz.lbres.androidapptemplate.databinding.FragmentSecondBinding
 
+/**
+ * Second fragment to navigate to
+ */
 class SecondFragment : NavHostFragment() {
     private lateinit var binding: FragmentSecondBinding
 
