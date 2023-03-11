@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
-import xyz.lbres.androidapptemplate.BaseActivity
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.databinding.FragmentFirstBinding
 
 /**
  * Initial fragment in the app
  */
-class FirstFragment : NavHostFragment() {
+class FirstFragment : BaseFragment() {
     private lateinit var binding: FragmentFirstBinding
 
     /**
@@ -21,7 +19,7 @@ class FirstFragment : NavHostFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
         binding.navigateText.setOnClickListener {
-            (requireActivity() as BaseActivity).runNavAction(R.id.navigateFirstToSecond)
+            requireBaseActivity().runNavAction(R.id.navigateFirstToSecond)
         }
 
         return binding.root
