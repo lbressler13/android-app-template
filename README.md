@@ -15,7 +15,7 @@ This is a template for creating an Android app with two build flavors.
 It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog. 
 This dialog can easily be augmented with app-specific functionality, such as erasing data from ViewModels.
 
-The code in this template is inspired by two other repos that share this functionality, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
+The code in this template is inspired by two other repos that share functionality, tests, and utils, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
 
 ### Build Flavors
 
