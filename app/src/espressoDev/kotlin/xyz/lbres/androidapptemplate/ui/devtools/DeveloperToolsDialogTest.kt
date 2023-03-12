@@ -20,8 +20,6 @@ import xyz.lbres.androidapptemplate.testutils.rules.RetryRule
 
 @RunWith(AndroidJUnit4::class)
 class DeveloperToolsDialogTest {
-    private val devToolsButton = onView(withId(R.id.devToolsButton))
-
     @Rule
     @JvmField
     val activityRule = ActivityScenarioRule(BaseActivity::class.java)
