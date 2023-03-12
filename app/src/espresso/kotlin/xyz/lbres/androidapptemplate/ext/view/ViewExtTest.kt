@@ -23,7 +23,7 @@ class ViewExtTest {
 
     @Test
     fun visible() {
-        onView(withId(R.id.navigateText))
+        onView(withId(R.id.infoButton))
             .perform(callInvisible())
             .check(isNotPresented())
             .perform(callVisible())
@@ -32,7 +32,7 @@ class ViewExtTest {
 
     @Test
     fun invisible() {
-        onView(withId(R.id.navigateText))
+        onView(withId(R.id.infoButton))
             .check(matches(isDisplayed()))
             .perform(callInvisible())
             .check(isNotPresented())
@@ -40,7 +40,7 @@ class ViewExtTest {
 
     @Test
     fun gone() {
-        onView(withId(R.id.navigateText))
+        onView(withId(R.id.infoButton))
             .check(matches(isDisplayed()))
             .perform(callGone())
             .check(isNotPresented())
@@ -48,7 +48,7 @@ class ViewExtTest {
 
     @Test
     fun enable() {
-        onView(withId(R.id.navigateText))
+        onView(withId(R.id.infoButton))
             .perform(callDisable())
             .check(matches(isNotEnabled()))
             .perform(callEnable())
@@ -57,7 +57,7 @@ class ViewExtTest {
 
     @Test
     fun disable() {
-        onView(withId(R.id.navigateText))
+        onView(withId(R.id.infoButton))
             .check(matches(isEnabled()))
             .perform(callDisable())
             .check(matches(isNotEnabled()))

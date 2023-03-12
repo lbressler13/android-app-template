@@ -11,6 +11,10 @@
     <color name="white">#ffffff</color>
 
     <color name="light_background">#ececec</color>
+    <color name="light_disabled_foreground_gray">#777</color>
+    <color name="light_disabled_background_gray">#ccc</color>
 
     <color name="dark_action_bar">#aaafaf</color>
+    <color name="dark_disabled_foreground_gray">#7a7a7a</color>
+    <color name="dark_disabled_background_gray">#222</color>
 </resources>
