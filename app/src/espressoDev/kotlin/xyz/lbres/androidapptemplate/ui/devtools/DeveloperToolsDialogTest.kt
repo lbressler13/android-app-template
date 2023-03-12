@@ -61,4 +61,12 @@ class DeveloperToolsDialogTest {
         openDevTools()
         onView(withText("Developer Tools")).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun attributionsFragment() {
+        onView(withId(R.id.infoButton)).perform(click())
+
+        openDevTools()
+        onView(withText("Developer Tools")).check(matches(isDisplayed()))
+    }
 }

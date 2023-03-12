@@ -37,8 +37,14 @@ class FirstFragmentTest {
     }
 
     @Test
-    fun navigateToSecond() {
+    fun secondFragment() {
         onView(withId(R.id.navigateText)).perform(click())
         onView(withText("Second Fragment")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun attributionsFragment() {
+        onView(withId(R.id.infoButton)).perform(click())
+        onView(withText("Image Attributions")).check(matches(isDisplayed()))
     }
 }

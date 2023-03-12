@@ -19,8 +19,12 @@ class FirstFragment : BaseFragment() {
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
+
         binding.navigateText.setOnClickListener {
             requireBaseActivity().runNavAction(R.id.navigateFirstToSecond)
+        }
+        binding.infoButton.setOnClickListener {
+            requireBaseActivity().runNavAction(R.id.navigateFirstToAttributions)
         }
 
         return binding.root
