@@ -18,6 +18,8 @@ class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityBaseBinding.inflate(layoutInflater)
+        ProductFlavor.setupFlavor(this)
+
         setContentView(binding.root)
     }
 

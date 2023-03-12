@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="xyz.lbres.androidapptemplate.ui.FirstFragment"
+        android:name="xyz.lbres.androidapptemplate.ui.first.FirstFragment"
         android:label="FirstFragment">
 
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/secondFragment"
-        android:name="xyz.lbres.androidapptemplate.ui.SecondFragment"
+        android:name="xyz.lbres.androidapptemplate.ui.second.SecondFragment"
         android:label="SecondFragment">
 
         <action
