@@ -2,13 +2,8 @@
     <string name="app_name">Android App Template</string>
     <string name="title_action_bar">Android App Template</string>
 
-    <!-- First Fragment -->
-    <string name="click_navigate">Click to navigate to next fragment</string>
-
-    <!-- Second Fragment -->
-    <string name="title_second_fragment">Second Fragment</string>
-    <string name="click_pop_backstack">Click to pop backstack.</string>
-    <string name="visited_message">Visited %d times.</string>
+    <!-- Home Fragment -->
+    <string name="welcome_message">Welcome to the app template!</string>
 
     <!-- Attributions -->
     <string name="title_attributions">Image Attributions</string>

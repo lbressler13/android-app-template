@@ -1,4 +1,4 @@
-package xyz.lbres.androidapptemplate.ui.first
+package xyz.lbres.androidapptemplate.ui.home
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -16,7 +16,7 @@ import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.testutils.rules.RetryRule
 
 @RunWith(AndroidJUnit4::class)
-class FirstFragmentTest {
+class HomeFragmentTest {
 
     @Rule
     @JvmField
@@ -33,13 +33,7 @@ class FirstFragmentTest {
 
     @Test
     fun initialUi() {
-        onView(withText("Click to navigate to next fragment")).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun secondFragment() {
-        onView(withId(R.id.navigateText)).perform(click())
-        onView(withText("Second Fragment")).check(matches(isDisplayed()))
+        onView(withText("Welcome to the app template!")).check(matches(isDisplayed()))
     }
 
     @Test
