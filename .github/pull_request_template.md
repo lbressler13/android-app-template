@@ -10,6 +10,9 @@
   * [ ] on dev flavor
   * [ ] on final flavor
 * [ ] Tests have been written for all new functionality
+* [ ] Any new/deleted images have been updated in
+  * [ ] the image attributions fragment
+  * [ ] the README
 
 ## Comments
 Fun but optional
