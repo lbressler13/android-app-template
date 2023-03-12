@@ -24,17 +24,16 @@ class DeveloperToolsDialog : DialogFragment() {
     private lateinit var binding: DialogDeveloperToolsBinding
 
     /**
-     * Build dialog, comes before onCreateView and dialog is not connected to context
+     * Build dialog. Comes before onCreateView, so dialog is not connected to context
      */
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogDeveloperToolsBinding.inflate(layoutInflater)
-        val root = binding.root
 
         val doneText = requireContext().getString(R.string.done)
         val title = requireContext().getString(R.string.title_dev_tools)
 
         return AlertDialog.Builder(requireContext())
-            .setView(root)
+            .setView(binding.root)
             .setMessage(title)
             .setPositiveButton(doneText) { _, _ -> }
             .create()
@@ -100,13 +99,6 @@ class DeveloperToolsDialog : DialogFragment() {
      * @return [BaseActivity]
      */
     private fun requireBaseActivity(): BaseActivity = requireActivity() as BaseActivity
-
-    /**
-     * Get parent fragment as [BaseFragment].
-     *
-     * @return [BaseFragment]
-     */
-    private fun requireBaseFragment(): BaseFragment = requireParentFragment() as BaseFragment
 
     companion object {
         // tag is required when showing dialog

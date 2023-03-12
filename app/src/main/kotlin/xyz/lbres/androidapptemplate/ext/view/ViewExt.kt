@@ -1,4 +1,4 @@
-package xyz.lbres.androidapptemplate.view.ext
+package xyz.lbres.androidapptemplate.ext.view
 
 import android.view.View
 

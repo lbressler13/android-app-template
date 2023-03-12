@@ -7,7 +7,8 @@
 
     <!-- Second Fragment -->
     <string name="title_second_fragment">Second Fragment</string>
-    <string name="click_pop_backstack">Click to pop backstack</string>
+    <string name="click_pop_backstack">Click to pop backstack.</string>
+    <string name="visited_message">Visited %d times.</string>
 
     <!-- Dev Tools -->
     <string name="dev_tools_button">{ }</string>
