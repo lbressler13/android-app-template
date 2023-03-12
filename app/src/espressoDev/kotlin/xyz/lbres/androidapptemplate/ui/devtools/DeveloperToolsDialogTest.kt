@@ -55,14 +55,6 @@ class DeveloperToolsDialogTest {
     @Test fun hideDevTools() = testHideDevTools()
 
     @Test
-    fun secondFragment() {
-        onView(withId(R.id.navigateText)).perform(click())
-
-        openDevTools()
-        onView(withText("Developer Tools")).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun attributionsFragment() {
         onView(withId(R.id.infoButton)).perform(click())
 

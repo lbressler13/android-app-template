@@ -12,8 +12,7 @@ jobs:
     uses: ./.github/workflows/basic_checks.yml
     secrets: inherit
 
-  # TODO uncomment in public repos
-  # espresso-tests:
-    # name: "Espresso Tests"
-    # uses: ./.github/workflows/espresso_tests.yml
-    # secrets: inherit
+  espresso-tests:
+    name: "Espresso Tests"
+    uses: ./.github/workflows/espresso_tests.yml
+    secrets: inherit
