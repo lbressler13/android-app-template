@@ -12,6 +12,10 @@
         <action
             android:id="@+id/navigateFirstToSecond"
             app:destination="@id/secondFragment" />
+
+        <action
+            android:id="@+id/navigateFirstToAttributions"
+            app:destination="@id/attributionsFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +27,10 @@
             android:id="@+id/navigateSecondToFirst"
             app:destination="@id/firstFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/attributionsFragment"
+        android:name="xyz.lbres.androidapptemplate.ui.attributions.AttributionsFragment"
+        android:label="AttributionsFragment" />
 
 </navigation>

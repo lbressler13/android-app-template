@@ -10,5 +10,7 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
 
+    <color name="light_background">#ececec</color>
+
     <color name="dark_action_bar">#aaafaf</color>
 </resources>

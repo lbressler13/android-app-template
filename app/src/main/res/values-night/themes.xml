@@ -9,6 +9,9 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
+        <!-- Other system values. -->
+        <item name="backgroundColor">@color/black</item>
+        <item name="background">@color/black</item>
         <!-- Action bar-->
         <item name="actionBarBackground">@color/dark_action_bar</item>
         <item name="actionBarTextColor">@color/black</item>
