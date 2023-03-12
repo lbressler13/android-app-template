@@ -2,7 +2,7 @@ package xyz.lbres.androidapptemplate
 
 import xyz.lbres.androidapptemplate.ui.BaseFragment
 import xyz.lbres.androidapptemplate.ui.DeveloperToolsDialog
-import xyz.lbres.androidapptemplate.view.ext.visible
+import xyz.lbres.androidapptemplate.ext.view.visible
 
 /**
  * Configuration for dev build flavor

@@ -14,8 +14,8 @@ import androidx.fragment.app.DialogFragment
 import xyz.lbres.androidapptemplate.BaseActivity
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.databinding.DialogDeveloperToolsBinding
-import xyz.lbres.androidapptemplate.view.ext.gone
-import xyz.lbres.androidapptemplate.view.ext.visible
+import xyz.lbres.androidapptemplate.ext.view.gone
+import xyz.lbres.androidapptemplate.ext.view.visible
 
 /**
  * Dialog with various developer tools, only available in dev build flavor
