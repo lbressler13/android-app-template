@@ -120,7 +120,7 @@ dependencies {
     val materialVersion = "1.6.1"
     val navigationVersion = "2.5.3"
 
-    val kotlinUtilsVersion = "0.4.0"
+    val kotlinUtilsVersion = "1.0.0"
 
     val androidxJunitVersion = "1.1.4"
     val androidxTestVersion = "1.5.0"
