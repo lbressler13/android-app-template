@@ -32,8 +32,8 @@ To pull packages from the registry, you need a GitHub access token with the `rea
 
 In order to build to with the package, you can add the following properties to a gradle.properties file:
 ```properties
-gpr.user=GITHUB_USERNAME
-gpr.key=GITHUB_PAT
+github.username=GITHUB_USERNAME
+github.token=GITHUB_PAT
 ```
 or as environment variables:
 ```shell

@@ -4,8 +4,8 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0" // ktlint
 }
 
-val githubUsername: String? = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
-val githubPassword: String? = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
+val githubPassword: String? = project.findProperty("github.token")?.toString() ?: System.getenv("ACCESS_TOKEN")
 
 repositories {
     // general repositories
