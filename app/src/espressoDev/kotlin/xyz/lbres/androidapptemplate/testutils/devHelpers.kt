@@ -19,3 +19,12 @@ fun openDevTools() {
 fun closeDialog() {
     onView(withText("Done")).perform(click())
 }
+
+/**
+ * Open dev tools dialog, refresh UI, and close dev tools dialog
+ */
+fun doRefreshUI() {
+    openDevTools()
+    onView(withId(R.id.refreshUIButton)).perform(click())
+    closeDialog()
+}
