@@ -22,6 +22,17 @@ repositories {
     }
 }
 
+fun getEspressoRetries(): Int {
+    val defaultRetries = 0
+
+    return if (project.hasProperty("espressoRetries")) {
+        val espressoRetries: String? by project
+        espressoRetries?.toIntOrNull() ?: defaultRetries
+    } else {
+        defaultRetries
+    }
+}
+
 android {
     namespace = "xyz.lbres.androidapptemplate"
     compileSdk = 33
@@ -32,6 +43,8 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0.0"
+
+        buildConfigField("int", "ESPRESSO_RETRIES", getEspressoRetries().toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"

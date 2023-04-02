@@ -4,6 +4,8 @@ import android.util.Log
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
+import xyz.lbres.androidapptemplate.BuildConfig.ESPRESSO_RETRIES
+import xyz.lbres.androidapptemplate.test.BuildConfig
 
 /**
  * [TestRule] to re-run a failed test, in order to reduce failures in flaky tests.
@@ -12,9 +14,9 @@ import org.junit.runners.model.Statement
  * https://andresand.medium.com/retry-testrule-for-android-espresso-tests-74683ee3b845
  *
  * @param maxRetries [Int]: number of times to re-try failing test, not including the initial test run.
- * Defaults to 3.
+ * Defaults to value passed in build parameters.
  */
-class RetryRule(val maxRetries: Int = 3) : TestRule {
+class RetryRule(val maxRetries: Int = BuildConfig.ESPRESSO_RETRIES) : TestRule {
     /**
      * Apply rule to a test with a given description
      *
