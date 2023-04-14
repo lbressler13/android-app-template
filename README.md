@@ -6,7 +6,7 @@
 - [Testing](#testing)
 - [Linting](#linting)
 - [Using the Template](#using-the-template)
-- [Folder Structure](#folder-structure)
+- [Project Structure](#project-structure)
 - [Image Attributions](#image-attributions)
 
 ## Overview
@@ -15,7 +15,7 @@ This is a template for creating an Android app with two build flavors.
 It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog. 
 This dialog can easily be augmented with app-specific functionality, such as erasing data from ViewModels.
 
-The code in this template is inspired by two other repos that share functionality, tests, and utils, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
+The code in this template is inspired by other repos that share functionality, tests, and utils, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
 
 ### Build Flavors
 
@@ -38,7 +38,7 @@ github.token=GITHUB_PAT
 or as environment variables:
 ```shell
 USERNAME=GITHUB_USERNAME
-TOKEN=GITHUB_PAT
+ACCESS_TOKEN=GITHUB_PAT
 ```
 
 See [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry#using-a-published-package) for more information on importing GitHub packages.
@@ -92,6 +92,14 @@ The name also needs to be changed in the following places:
 - [ ] Application name and namespace in the app build.gradle.kts file
 - [ ] Root project name in settings.gradle.kts
 
+### Tests
+
+The UI tests look at package name and action bar title.
+These need to be updated in the following tests:
+- [ ] BaseActivityTest, under useAppContext for both build variants
+- [ ] HomeFragmentTest, under actionBarTitle
+- [ ] AttributionsFragmentTest, under closeButton
+
 ### Workflows
 
 The template contains 3 workflows. The first workflow runs basic checks, such as linting and unit tests.
@@ -103,7 +111,7 @@ If there are restrictions on the minutes available, you should consider removing
 All three workflows use gradlew to execute commands.
 You may need to run `git update-index --chmod=+x ./gradlew` to grant executable permissions in GitHub actions.
 
-## Folder Structure
+## Project Structure
 
 ```project
 ├── .github
