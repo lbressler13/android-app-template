@@ -1,4 +1,4 @@
-package xyz.lbres.androidapptemplate.ui
+package xyz.lbres.androidapptemplate.ui.devtools
 
 import android.app.AlertDialog
 import android.app.Dialog
