@@ -138,7 +138,6 @@ dependencies {
     val androidxTestRulesVersion = "1.5.0"
     val androidxTestRunnerVersion = "1.5.2"
     val espressoVersion = "3.5.1"
-    val junitVersion = "4.13.2"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
@@ -151,7 +150,7 @@ dependencies {
     implementation("xyz.lbres:kotlin-utils:$kotlinUtilsVersion")
 
     // testing
-    testImplementation("junit:junit:$junitVersion")
+    testImplementation(kotlin("test"))
     androidTestImplementation("androidx.test.ext:junit:$androidxJunitVersion")
     androidTestImplementation("androidx.test:rules:$androidxTestRulesVersion")
     androidTestImplementation("androidx.test:runner:$androidxTestRunnerVersion") // needed to run on emulator
