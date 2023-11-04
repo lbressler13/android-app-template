@@ -4,13 +4,15 @@ buildscript {
         mavenCentral()
     }
 
-    val kotlinVersion by extra { "1.8.0" }
-    val gradleVersion = "7.3.1"
+    val kotlinVersion by extra { "1.9.0" }
+    val gradleVersion = "8.1.2"
 
     // only project-level dependencies, app-specific dependencies should go in application build files
     dependencies {
         classpath("com.android.tools.build:gradle:$gradleVersion")
-        classpath(kotlin("gradle-plugin", version = kotlinVersion))
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        // classpath("com.android.tools.build:gradle:$gradleVersion")
+        // classpath(kotlin("gradle-plugin", version = kotlinVersion))
     }
 }
 

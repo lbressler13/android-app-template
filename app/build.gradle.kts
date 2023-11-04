@@ -35,12 +35,12 @@ fun getEspressoRetries(): Int {
 
 android {
     namespace = "xyz.lbres.androidapptemplate"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
         minSdk = 29 // maximum sdk available in tester used in github actions
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
 
@@ -106,6 +106,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
@@ -126,18 +127,17 @@ android {
 dependencies {
     val kotlinVersion: String by rootProject.extra
 
-    val androidxCoreVersion = "1.9.0"
+    val androidxCoreVersion = "1.12.0"
     val appCompatVersion = "1.6.1"
     val constraintLayoutVersion = "2.1.4"
-    val lifecycleVersion = "2.6.1"
-    val navigationVersion = "2.5.3"
-
-    val kotlinUtilsVersion = "1.0.0"
+    val kotlinUtilsVersion = "1.3.0"
+    val lifecycleVersion = "2.6.2"
+    val navigationVersion = "2.7.5"
 
     val androidxJunitVersion = "1.1.5"
     val androidxTestRulesVersion = "1.5.0"
     val androidxTestRunnerVersion = "1.5.2"
-    val espressoVersion = "3.4.0"
+    val espressoVersion = "3.5.1"
     val junitVersion = "4.13.2"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
