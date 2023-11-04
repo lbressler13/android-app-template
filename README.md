@@ -47,12 +47,15 @@ See [here](https://docs.github.com/en/packages/working-with-a-github-packages-re
 
 ### Unit Tests
 
+Unit tests are implemented using the Kotlin test library. 
+See [here](https://kotlinlang.org/api/latest/kotlin.test/) for information about the library.
+
 Unit tests can be run via an IDE, or with the following command:
 ```./gradlew test```
 
 ### UI Tests
 
-Sample UI tests are implemented using the Espresso framework.
+UI tests are implemented using the Espresso framework.
 Tests can be configured for an individual build flavor, or can be shared across flavors.
 The template has pre-existing tests for the image attributions fragment and developer tools dialog.
 
