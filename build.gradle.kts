@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
 
-    val kotlinVersion by extra { "1.9.0" }
+    val kotlinVersion by extra { "1.9.20" }
     val gradleVersion = "8.4.2"
 
     // only project-level dependencies, app-specific dependencies should go in application build files
