@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("org.jlleitschuh.gradle.ktlint") version "10.3.0" // ktlint
+    id("org.jlleitschuh.gradle.ktlint") version "11.6.0" // ktlint
 }
 
 val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
@@ -122,6 +122,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+}
+
+ktlint {
+    disabledRules.set(setOf("filename"))
 }
 
 dependencies {
