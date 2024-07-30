@@ -93,6 +93,7 @@ class DeveloperToolsDialog : DialogFragment() {
 
         dismiss()
     }
+
     /**
      * Get current activity as [BaseActivity].
      *
