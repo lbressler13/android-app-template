@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import xyz.lbres.androidapptemplate.ui.attributions.authorattribution.AuthorAttr
 import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
 import xyz.lbres.androidapptemplate.ui.attributions.constants.flaticonAttrPolicyUrl
 import xyz.lbres.androidapptemplate.ui.attributions.constants.flaticonUrl
+import xyz.lbres.androidapptemplate.utils.HorizontalDividerDecoration
 import xyz.lbres.androidapptemplate.utils.createUnderlineText
 
 /**
@@ -57,9 +59,12 @@ class AttributionsFragment : BaseFragment() {
     private fun initializeAttributionsRecycler() {
         val recycler: RecyclerView = binding.attributionsRecycler
         val adapter = AuthorAttributionAdapter(authorAttributions, viewModel)
+        val divider = AppCompatResources.getDrawable(requireContext(), R.drawable.divider_2p)
+        val itemDecoration = HorizontalDividerDecoration(divider!!)
 
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.addItemDecoration(itemDecoration)
     }
 
     /**
