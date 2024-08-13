@@ -1,0 +1,38 @@
+name: Create Emulator
+
+on:
+  push: # TODO remove this
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  run:
+    name: Run Job
+
+    runs-on: ubuntu-latest
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      ACCESS_TOKEN: ${{ secrets.TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Java Version
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: 17
+          cache: gradle
+
+      - name: Gradle Cache
+        uses: gradle/gradle-build-action@v2.4.2
+
+      - name: ls
+        run: ls -a
+
+      - name: Get cli
+        run:  wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+
+      - name: Unzip
+        run: unzip commandlinetools-linux-11076708_latest.zip -d sdk
