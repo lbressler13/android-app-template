@@ -42,7 +42,7 @@ jobs:
         run: ls -a
 
       - name: Test sdk manager
-        run: sdk/cmdline-tools/bin/sdkmanager --help
+        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools/ --help
 
       - name: Install platform
         run: sdk/cmdline-tools/bin/sdkmanager --install "platforms;android-$ANDROID_VERSION"
