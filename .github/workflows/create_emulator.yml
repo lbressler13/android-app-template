@@ -67,7 +67,10 @@ jobs:
           ./cmdline-tools/latest/bin/sdkmanager --version
 
       - name: Test sdkmanager
-        run: sdkmanager --version
+        run: |
+          echo $ANDROID_HOME
+          echo $PATH
+          sdkmanager --version
 
 #      - name: Test sdk manager
 #        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
