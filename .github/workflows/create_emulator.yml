@@ -51,10 +51,14 @@ jobs:
 
       - name: Update Path
         run: |
+          cd sdk
           echo $PATH
-          export ANDROID_HOME="$(pwd)/sdk"
+          export ANDROID_HOME="$(pwd)"
           export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
           echo $PATH
+
+      - name: Test sdkmanager path
+        run: ./cmdline-tools/latest/bin/sdkmanager --version
 
       - name: Test sdkmanager
         run: sdkmanager --version
