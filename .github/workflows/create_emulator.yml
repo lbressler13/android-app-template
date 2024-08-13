@@ -32,6 +32,7 @@ jobs:
       - name: ls
         run: ls -a
 
+      # TODO caching
       - name: Get cli
         run:  wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 
@@ -42,7 +43,7 @@ jobs:
         run: ls -a
 
       - name: Test sdk manager
-        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools/ --help
+        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools/ --help --verbose
 
       - name: Install platform
         run: sdk/cmdline-tools/bin/sdkmanager --install "platforms;android-$ANDROID_VERSION"
