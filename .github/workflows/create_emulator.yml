@@ -42,17 +42,27 @@ jobs:
       - name: ls
         run: ls sdk/cmdline-tools/bin
 
-      - name: Test sdk manager
-        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
+      - name: update folders
+        run: |
+          mkdir sdk/latest
+          mv sdk/cmdline-tools/* sdk/latest
+          mv sdk/latest sdk/cmdline-tools
+          ls sdk/cmdline-tools
 
-      - name: Install platform
-        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "platforms;android-$ANDROID_VERSION"
+      - name: path
+        run: echo $PATH
 
-      - name: Install image
-        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "system-images;android-$ANDROID_VERSION;default;x86_64"
-
-      - name: List installed
-        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --list_installed
-
-      # - name: Install build tools
-        # run: yes | sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "build-tools;34.0.0"
+#      - name: Test sdk manager
+#        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
+#
+#      - name: Install platform
+#        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "platforms;android-34"
+#
+#      - name: Install image
+#        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "system-images;android-34;default;x86_64"
+#
+#      - name: List installed
+#        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --list_installed
+#
+#      - name: Create AVD
+#        run: sdk/cmdline-tools/bin/avdmanager --name gha_emulator --device "pixel_6" --package "system-images;android-34
