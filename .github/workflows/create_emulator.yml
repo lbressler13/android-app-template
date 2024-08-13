@@ -46,10 +46,10 @@ jobs:
         run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
 
       - name: Install platform
-        run: sdk/cmdline-tools/bin/sdkmanager --install "platforms;android-$ANDROID_VERSION"
+        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "platforms;android-$ANDROID_VERSION"
 
       - name: Install image
-        run: sdk/cmdline-tools/bin/sdkmanager --install "system-images;android-$ANDROID_VERSION;default;x86_64"
+        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --install "system-images;android-$ANDROID_VERSION;default;x86_64"
 
       - name: List installed
-        run: sdk/cmdline-tools/bin/sdkmanager --list_installed
+        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --list_installed
