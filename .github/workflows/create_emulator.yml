@@ -58,8 +58,10 @@ jobs:
           echo $PATH
 
       - name: Test sdkmanager path
-        run: | 
+        run: |
+          cd sdk
           pwd
+          echo $ANDROID_HOME
           ls -a
           ls cmdline-tools
           ./cmdline-tools/latest/bin/sdkmanager --version
