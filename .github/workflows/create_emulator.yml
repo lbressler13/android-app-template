@@ -73,6 +73,11 @@ jobs:
           echo $PATH
           sdkmanager --version
 
+      - name: Test sdkmanager 2
+        run: |
+          echo $PATH
+          sdkmanager --version
+
 #      - name: Test sdk manager
 #        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
 #
