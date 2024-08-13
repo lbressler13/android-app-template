@@ -82,10 +82,7 @@ jobs:
           sdkmanager emulator
           sdkmanager --list_installed
           avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
-          emulator -list-avds
 
-      - name: List Installed
+      - name: Start Emulator
         run: |
-          sdkmanager --version
-          sdkmanager --list_installed
-          avdmanager list avd
+          ./emulator/emulator -list-avds
