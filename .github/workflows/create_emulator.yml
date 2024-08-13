@@ -80,7 +80,7 @@ jobs:
           yes | sdkmanager --sdk_root=./sdk/cmdline-tools --install "platforms;android-34"
           yes | sdkmanager --sdk_root=./sdk/cmdline-tools --install "system-images;android-34;default;x86_64"
           sdkmanager --sdk_root=./sdk/cmdline-tools --list_installed
-          avdmanager --name gha_emulator --device "pixel_6" --package "system-images;android-34"
+          avdmanager create avd --name gha_emulator --device "pixel_6" --package "system-images;android-34"
 
 #      - name: Test sdk manager
 #        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
