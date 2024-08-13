@@ -49,8 +49,15 @@ jobs:
           mv sdk/latest sdk/cmdline-tools
           ls sdk/cmdline-tools
 
-      - name: path
-        run: echo $PATH
+      - name: Update Path
+        run: |
+          echo $PATH
+          export ANDROID_HOME="$(pwd)/sdk"
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          echo $PATH
+
+      - name: Test sdkmanager
+        run: sdkmanager --version
 
 #      - name: Test sdk manager
 #        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
