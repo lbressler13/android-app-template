@@ -77,12 +77,17 @@ jobs:
         run: |
           export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
           sdkmanager --version
-          sdkmanager --version
           yes | sdkmanager --install "build-tools;34.0.0"
           yes | sdkmanager --install "platforms;android-34"
           yes | sdkmanager --install "system-images;android-34;google_apis;x86_64"
           sdkmanager --list_installed
-          avdmanager create avd --name gha_emulator --device "pixel_6" --package "system-images;android-34;google-apis;x86_64"
+          avdmanager create avd --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
+
+      - name: List Installed
+        run: |
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+          sdkmanager --version
+          sdkmanager --list_installed
 
 #      - name: Test sdk manager
 #        run: sdk/cmdline-tools/bin/sdkmanager --sdk_root=./sdk/cmdline-tools --version
