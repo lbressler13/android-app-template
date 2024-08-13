@@ -69,6 +69,7 @@ jobs:
       - name: Test sdkmanager
         run: |
           echo $ANDROID_HOME
+          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
           echo $PATH
           sdkmanager --version
 
