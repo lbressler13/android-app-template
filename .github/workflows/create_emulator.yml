@@ -58,7 +58,11 @@ jobs:
           echo $PATH
 
       - name: Test sdkmanager path
-        run: ./cmdline-tools/latest/bin/sdkmanager --version
+        run: | 
+          pwd
+          ls -a
+          ls cmdline-tools
+          ./cmdline-tools/latest/bin/sdkmanager --version
 
       - name: Test sdkmanager
         run: sdkmanager --version
