@@ -49,4 +49,6 @@ jobs:
       - name: Start Emulator
         run: |
           avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
+          avdmanager list avd
           $ANDROID_HOME/emulator/emulator --help
+          $ANDROID_HOME/emulator/emulator -list-avds
