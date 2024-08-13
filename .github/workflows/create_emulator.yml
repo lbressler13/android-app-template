@@ -32,43 +32,6 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-#      - name: ls
-#        run: ls -a
-#
-#      # TODO caching
-#      - name: Get cli
-#        run:  wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-#
-#      - name: Unzip
-#        run: unzip commandlinetools-linux-11076708_latest.zip -d sdk
-#
-#      - name: ls
-#        run: ls sdk/cmdline-tools/bin
-#
-#      - name: update folders
-#        run: |
-#          mkdir sdk/latest
-#          mv sdk/cmdline-tools/* sdk/latest
-#          mv sdk/latest sdk/cmdline-tools
-#          ls sdk/cmdline-tools
-#
-#      - name: Update Path
-#        run: |
-#          cd sdk
-#          echo $PATH
-#          export ANDROID_HOME="$(pwd)"
-#          export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
-#          echo $PATH
-
-#      - name: Test sdkmanager path
-#        run: |
-#          cd sdk
-#          pwd
-#          echo $ANDROID_HOME
-#          ls -a
-#          ls cmdline-tools
-#          ./cmdline-tools/latest/bin/sdkmanager --version
-
       - name: Test sdkmanager
         run: |
           sdkmanager --version
@@ -80,9 +43,11 @@ jobs:
           sdkmanager --install "platforms;android-34"
           sdkmanager --install "system-images;android-34;google_apis;x86_64"
           sdkmanager emulator
+          ls
           sdkmanager --list_installed
           avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
 
       - name: Start Emulator
         run: |
-          ./emulator/emulator -list-avds
+          ls
+          sdkmanager --list_installed
