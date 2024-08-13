@@ -49,6 +49,8 @@ jobs:
       - name: Start Emulator
         run: |
           avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
-          avdmanager list avd
           $ANDROID_HOME/emulator/emulator --help
-          $ANDROID_HOME/emulator/emulator -avd gha_emulator -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          $ANDROID_HOME/emulator/emulator -list-avds
+          $ANDROID_HOME/emulator/emulator -list-avds
+
+        # $ANDROID_HOME/emulator/emulator -avd gha_emulator -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
