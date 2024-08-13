@@ -13,6 +13,7 @@ jobs:
     env:
       USERNAME: ${{ secrets.USERNAME }}
       ACCESS_TOKEN: ${{ secrets.TOKEN }}
+      ANDROID_VERSION: 34
 
     steps:
       - name: Checkout
@@ -36,3 +37,18 @@ jobs:
 
       - name: Unzip
         run: unzip commandlinetools-linux-11076708_latest.zip -d sdk
+
+      - name: ls
+        run: ls -a
+
+      - name: Test sdk manager
+        run: sdk/cmdline-tools/bin/sdkmanager --help
+
+      - name: Install platform
+        run: sdk/cmdline-tools/bin/sdkmanager --install "platforms;android-$ANDROID_VERSION"
+
+      - name: Install image
+        run: sdk/cmdline-tools/bin/sdkmanager --install "system-images;android-$ANDROID_VERSION;default;x86_64"
+
+      - name: List installed
+        run: sdk/cmdline-tools/bin/sdkmanager --list_installed
