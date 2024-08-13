@@ -49,5 +49,4 @@ jobs:
 
       - name: Start Emulator
         run: |
-          ls $ANDROID_HOME
-          sdkmanager --list_installed
+          $ANDROID_HOME/emulator/emulator -list-avds
