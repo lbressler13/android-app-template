@@ -1,3 +1,4 @@
+/* ktlint-disable max-line-length */
 package xyz.lbres.androidapptemplate.ui.attributions.constants
 
 /**

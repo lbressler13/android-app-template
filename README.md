@@ -70,7 +70,7 @@ See [here](https://developer.android.com/training/testing/espresso) for more inf
 ## Linting
 
 Linting is done using [ktlint](https://ktlint.github.io/), using [this](https://github.com/jlleitschuh/ktlint-gradle) plugin.
-See [here](https://github.com/pinterest/ktlint#standard-rules) for a list of standard rules.
+See [here](https://pinterest.github.io/ktlint/latest/rules/standard) for a list of standard rules.
 
 To run linting and fix formatting issues if possible, run the following command in the terminal or via an IDE:
 ```./gradlew ktlintFormat```
