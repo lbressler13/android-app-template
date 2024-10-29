@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
+import xyz.lbres.kotlinutils.general.simpleIf
 
 /**
  * [Matcher] to apply [vhMatcher] to a ViewHolder in a RecyclerView, at the given position
@@ -35,11 +36,7 @@ private class MatchesAtPositionViewMatcher(
         }
 
         val viewholder: View? = view.findViewHolderForAdapterPosition(position)?.itemView
-        if (viewholder == null) {
-            return false
-        }
-
-        return vhMatcher.matches(viewholder)
+        return simpleIf(viewholder == null, { false }, { vhMatcher.matches(viewholder) })
     }
 }
 
@@ -49,6 +46,5 @@ private class MatchesAtPositionViewMatcher(
  * @param position [Int]: position of ViewHolder in recycler
  * @param vhMatcher [Int]: matcher for ViewHolder
  */
-fun matchesAtPosition(position: Int, vhMatcher: Matcher<View?>): Matcher<View> {
-    return MatchesAtPositionViewMatcher(position, vhMatcher)
-}
+fun matchesAtPosition(position: Int, vhMatcher: Matcher<View?>): Matcher<View> =
+    MatchesAtPositionViewMatcher(position, vhMatcher)

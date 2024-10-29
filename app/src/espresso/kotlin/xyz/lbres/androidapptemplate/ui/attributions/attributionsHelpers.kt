@@ -30,9 +30,8 @@ private val nestedRecyclerId = R.id.imagesRecycler
  * @param position [Int]: position to scroll to
  * @return [ViewAction]: action to scroll to the given position
  */
-fun scrollToAuthorPosition(position: Int): ViewAction {
-    return RecyclerViewActions.scrollToPosition<AuthorAttributionViewHolder>(position)
-}
+fun scrollToAuthorPosition(position: Int): ViewAction =
+    RecyclerViewActions.scrollToPosition<AuthorAttributionViewHolder>(position)
 
 /**
  * Wrapper function to scroll a RecyclerView to [position], with ViewHolder type [ImageAttributionViewHolder]
@@ -40,9 +39,8 @@ fun scrollToAuthorPosition(position: Int): ViewAction {
  * @param position [Int]: position to scroll to
  * @return [ViewAction]: action to scroll to the given position
  */
-fun scrollToImagePosition(position: Int): ViewAction {
-    return RecyclerViewActions.scrollToPosition<ImageAttributionViewHolder>(position)
-}
+fun scrollToImagePosition(position: Int): ViewAction =
+    RecyclerViewActions.scrollToPosition<ImageAttributionViewHolder>(position)
 
 /**
  * Wrapper function to perform an action at a given index in a RecyclerView, with ViewHolder type [AuthorAttributionViewHolder]
@@ -51,9 +49,8 @@ fun scrollToImagePosition(position: Int): ViewAction {
  * @param action [ViewAction]: action to perform
  * @return [ViewAction]: action to perform given [action] on the ViewHolder at position [position]
  */
-fun actionOnAuthorItemAtPosition(position: Int, action: ViewAction): ViewAction {
-    return RecyclerViewActions.actionOnItemAtPosition<AuthorAttributionViewHolder>(position, action)
-}
+fun actionOnAuthorItemAtPosition(position: Int, action: ViewAction): ViewAction =
+    RecyclerViewActions.actionOnItemAtPosition<AuthorAttributionViewHolder>(position, action)
 
 /**
  * Click the expand/collapse button for an element in the main RecyclerView
