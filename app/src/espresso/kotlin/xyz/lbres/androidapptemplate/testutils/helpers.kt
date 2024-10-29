@@ -1,8 +1,11 @@
 package xyz.lbres.androidapptemplate.testutils
 
+import android.content.Context
 import android.content.Intent
 import androidx.test.espresso.intent.Intents.getIntents
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Assert.assertEquals
+import xyz.lbres.androidapptemplate.BaseActivity
 import java.lang.AssertionError
 
 /**
@@ -20,4 +23,19 @@ fun assertLinkOpened(url: String, expectedLinkClicks: Int) {
 
     val intent = intents.last()
     assertEquals(url, intent.dataString)
+}
+
+/**
+ * Get the current activity context
+ *
+ * @param activityRule [ActivityScenarioRule]: test rule with the activity
+ * @return [Context] context object
+ */
+fun getContextEspresso(activityRule: ActivityScenarioRule<BaseActivity>): Context {
+    var context: Context? = null
+    activityRule.scenario.onActivity {
+        context = it.supportFragmentManager.fragments[0].requireContext()
+    }
+
+    return context!!
 }
