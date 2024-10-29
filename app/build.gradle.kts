@@ -131,12 +131,12 @@ dependencies {
     val appCompatVersion = "1.7.0"
     val constraintLayoutVersion = "2.1.4"
     val kotlinUtilsVersion = "1.3.4"
-    val lifecycleVersion = "2.8.4"
-    val navigationVersion = "2.7.7"
+    val lifecycleVersion = "2.8.6"
+    val navigationVersion = "2.8.3"
 
     val androidxJunitVersion = "1.2.1"
     val androidxTestRulesVersion = "1.6.1"
-    val androidxTestRunnerVersion = "1.6.1"
+    val androidxTestRunnerVersion = "1.6.2"
     val espressoVersion = "3.6.1"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
