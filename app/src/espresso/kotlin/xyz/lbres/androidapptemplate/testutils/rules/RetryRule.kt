@@ -51,7 +51,7 @@ class RetryRule(val maxRetries: Int = ESPRESSO_RETRIES) : TestRule {
                         val remainingTries = maxRetries - i - 1
                         Log.e(
                             "RetryRule",
-                            "${description.displayName} failed, $remainingTries retries remaining"
+                            "${description.displayName} failed, $remainingTries retries remaining",
                         )
                     }
                 }
