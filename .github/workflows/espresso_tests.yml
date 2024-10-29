@@ -35,13 +35,13 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-31
+          key: avd-34
 
       - name: Create AVD and Generate Snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 34
           target: default
           arch: x86_64
           profile: Galaxy Nexus
@@ -53,10 +53,10 @@ jobs:
           script: echo "Generated AVD snapshot for caching."
 
       - name: Run Tests on Final Flavor
-        timeout-minutes: 15
+        # timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 34
           target: default
           arch: x86_64
           profile: Galaxy Nexus
@@ -73,7 +73,7 @@ jobs:
         timeout-minutes: 20
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 34
           target: default
           arch: x86_64
           profile: Galaxy Nexus
