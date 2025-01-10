@@ -53,7 +53,9 @@ jobs:
           echo "Listing AVDs"
           $ANDROID_HOME/emulator/emulator -list-avds
           echo "AVDs listed"
+          echo "Listing current dir"
           ls .
+          echo "Listing android home"
           ls $ANDROID_HOME
 
       - name: Start Emulator
