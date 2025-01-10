@@ -46,9 +46,11 @@ jobs:
           ls
           sdkmanager --list_installed
 
+      - name: Create Emulator
+        run: avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
+
       - name: Start Emulator
         run: |
-          avdmanager create avd --force --name gha_emulator --device "pixel_6" --package "system-images;android-34;google_apis;x86_64"
           echo "Listing AVDs"
           $ANDROID_HOME/emulator/emulator -list-avds
           $ANDROID_HOME/emulator/emulator -list-avds
