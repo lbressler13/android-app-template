@@ -50,6 +50,9 @@ jobs:
         run: |
           avdmanager create avd --force --name gha_emulator --device "Nexus 7" --package "system-images;android-34;google_apis;x86_64"
           echo "Device created"
+          echo "Listing AVDs"
+          $ANDROID_HOME/emulator/emulator -list-avds
+          echo "AVDs listed"
 
       - name: Start Emulator
         run: |
