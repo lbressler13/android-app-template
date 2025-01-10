@@ -54,6 +54,7 @@ jobs:
           $ANDROID_HOME/emulator/emulator -list-avds
           echo "AVDs listed"
           ls .
+          ls $ANDROID_HOME
 
       - name: Start Emulator
         run: |
