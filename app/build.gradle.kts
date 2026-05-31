@@ -114,6 +114,20 @@ android {
 
     testOptions {
         animationsDisabled = true
+        unitTests {
+            // needed for robolectric
+            isIncludeAndroidResources = true
+
+            all { test ->
+                test.useJUnit {
+                    val testType: String? by project
+                    when (testType?.lowercase()) {
+                        "unit" -> excludeCategories("org.robolectric.Robolectric")
+                        "robolectric" -> includeCategories("org.robolectric.Robolectric")
+                    }
+                }
+            }
+        }
     }
 
     compileOptions {
