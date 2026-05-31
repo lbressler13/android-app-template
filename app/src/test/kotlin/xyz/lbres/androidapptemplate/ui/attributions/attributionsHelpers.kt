@@ -11,13 +11,13 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers.allOf
 import xyz.lbres.androidapptemplate.R
+import xyz.lbres.androidapptemplate.ui.attributions.authorattribution.AuthorAttributionViewHolder
+import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
+import xyz.lbres.androidapptemplate.ui.attributions.imageattribution.ImageAttributionViewHolder
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.isShown
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.actionOnChildWithId
 import xyz.lbres.androidapptemplate.ui.testutils.viewassertions.isNotPresented
-import xyz.lbres.androidapptemplate.ui.attributions.authorattribution.AuthorAttributionViewHolder
-import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
-import xyz.lbres.androidapptemplate.ui.attributions.imageattribution.ImageAttributionViewHolder
 import xyz.lbres.kotlinutils.list.IntList
 
 private val imageUrls = authorAttributions.map { it.images.map { it.url } }

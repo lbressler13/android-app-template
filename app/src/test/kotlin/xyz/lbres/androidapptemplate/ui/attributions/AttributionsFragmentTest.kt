@@ -12,15 +12,15 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.isInternal
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith
@@ -28,18 +28,21 @@ import org.robolectric.Robolectric
 import xyz.lbres.androidapptemplate.BaseActivity
 import xyz.lbres.androidapptemplate.ProductFlavor
 import xyz.lbres.androidapptemplate.R
-import xyz.lbres.androidapptemplate.ui.testutils.assertLinkOpened
 import xyz.lbres.androidapptemplate.testutils.hideDevToolsButton
+import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
+import xyz.lbres.androidapptemplate.ui.testutils.assertLinkOpened
+import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.clickLinkInText
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.forceClick
 import xyz.lbres.androidapptemplate.ui.testutils.viewassertions.isNotPresented
-import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
 
 @Category(Robolectric::class)
 @RunWith(AndroidJUnit4::class)
 class AttributionsFragmentTest {
     private var scenario: ActivityScenario<BaseActivity>? = null
     private val intent = Intent(ApplicationProvider.getApplicationContext(), BaseActivity::class.java)
+
+    private val recycler = onView(withId(R.id.attributionsRecycler))
 
     @Before
     fun setupTest() {
@@ -149,8 +152,6 @@ class AttributionsFragmentTest {
 
     @Test
     fun dataNotPersistedOnClose() {
-        val recycler = onView(withId(R.id.attributionsRecycler))
-
         // expand attributions
         for (pair in authorAttributions.withIndex()) {
             val index = pair.index
@@ -193,6 +194,26 @@ class AttributionsFragmentTest {
 
     @Test
     fun recreate() {
-        // TODO copy from dev test
+        val authorTitles = authorAttributions.map { "Icon made by ${it.name} from www.flaticon.com" }
+
+        // refresh with initial view (all collapsed)
+        scenario!!.recreate()
+        onView(withId(R.id.expandCollapseMessage)).check(matches(withText("Expand")))
+        authorTitles.indices.forEach {
+            val withAuthorTitle = hasDescendant(withText(authorTitles[it]))
+            recycler.check(matches(matchesAtPosition(it, allOf(isDisplayed(), withAuthorTitle))))
+        }
+        checkImagesNotPresented(listOf(0, 1))
+
+        // expand some
+        hideDevToolsButton(0)
+        onView(withId(R.id.expandCollapseMessage)).perform(click())
+        expandCollapseAttribution(0)
+
+        scenario!!.recreate()
+
+        checkImagesDisplayed(listOf(0))
+        checkImagesNotPresented(listOf(1))
+        onView(withId(R.id.expandCollapseMessage)).check(matches(withText("Collapse")))
     }
 }

@@ -47,9 +47,4 @@ class HomeFragmentTest {
         onView(withId(R.id.infoButton)).perform(click())
         onView(withText("Image Attributions")).check(matches(isDisplayed()))
     }
-
-    @Test
-    fun recreate() {
-        // TODO copy from dev test
-    }
 }

@@ -11,11 +11,11 @@ import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.containsString
 import xyz.lbres.androidapptemplate.R
+import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
 import xyz.lbres.androidapptemplate.ui.testutils.assertLinkOpened
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.actionOnChildWithId
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.clickLinkInText
-import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
 
 private val imageUrls = authorAttributions.map { it.images.map { it.url } }
 private val attributionsRecycler = onView(withId(R.id.attributionsRecycler))
