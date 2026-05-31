@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
 
-    val kotlinVersion by extra { "1.9.20" }
-    val gradleVersion = "8.4.2"
+    val kotlinVersion by extra { "2.2.0" }
+    val gradleVersion = "8.12.3"
 
     // only project-level dependencies, app-specific dependencies should go in application build files
     dependencies {
@@ -15,5 +15,5 @@ buildscript {
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(layout.buildDirectory)
 }

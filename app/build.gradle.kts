@@ -1,7 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1" // ktlint
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 }
 
 val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
@@ -35,12 +37,12 @@ fun getEspressoRetries(): Int {
 
 android {
     namespace = "xyz.lbres.androidapptemplate"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
-        minSdk = 29 // maximum sdk available in tester used in github actions
-        targetSdk = 34
+        minSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
 
@@ -119,8 +121,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.fromTarget("11")
+        }
     }
 }
 
@@ -134,10 +138,10 @@ dependencies {
     val lifecycleVersion = "2.8.6"
     val navigationVersion = "2.8.3"
 
-    val androidxJunitVersion = "1.2.1"
-    val androidxTestRulesVersion = "1.6.1"
-    val androidxTestRunnerVersion = "1.6.2"
-    val espressoVersion = "3.6.1"
+    val androidxJunitVersion = "1.3.0"
+    val androidxTestRulesVersion = "1.7.0"
+    val espressoVersion = "3.7.0"
+    val robolectricVersion = "4.16.1"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
@@ -151,12 +155,14 @@ dependencies {
 
     // testing
     testImplementation(kotlin("test"))
+    testImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
+    testImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
+    testImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
+    testImplementation("androidx.test.ext:junit-ktx:$androidxJunitVersion")
+    testImplementation("org.robolectric:robolectric:$robolectricVersion")
     androidTestImplementation("androidx.test.ext:junit:$androidxJunitVersion")
     androidTestImplementation("androidx.test:rules:$androidxTestRulesVersion")
-    androidTestImplementation("androidx.test:runner:$androidxTestRunnerVersion") // needed to run on emulator
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
