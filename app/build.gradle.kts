@@ -37,12 +37,12 @@ fun getEspressoRetries(): Int {
 
 android {
     namespace = "xyz.lbres.androidapptemplate"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
         minSdk = 34
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
 
@@ -131,12 +131,12 @@ android {
 dependencies {
     val kotlinVersion: String by rootProject.extra
 
-    val androidxCoreVersion = "1.13.1"
-    val appCompatVersion = "1.7.0"
-    val constraintLayoutVersion = "2.1.4"
+    val androidxCoreVersion = "1.18.0"
+    val appCompatVersion = "1.7.1"
+    val constraintLayoutVersion = "2.2.1"
     val kotlinUtilsVersion = "1.3.4"
-    val lifecycleVersion = "2.8.6"
-    val navigationVersion = "2.8.3"
+    val lifecycleVersion = "2.10.0"
+    val navigationVersion = "2.9.8"
 
     val androidxJunitVersion = "1.3.0"
     val androidxTestRulesVersion = "1.7.0"
