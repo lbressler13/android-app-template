@@ -18,7 +18,7 @@ on:
 
 env:
   USERNAME: ${{ secrets.USERNAME }}
-  TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
   dependencies:
