@@ -1,6 +1,6 @@
 # Android App Template
 
-[![All Checks](https://github.com/lbressler13/android-app-template/actions/workflows/all_checks.yml/badge.svg?branch=main)](https://github.com/lbressler13/android-app-template/actions/workflows/all_checks.yml)
+[![Lint and Test](.github/workflows/lint_test.yml)](https://github.com/lbressler13/android-app-template/actions/workflows/lint_and_test.yml)
 
 - [Overview](#overview)
 - [Testing](#testing)
