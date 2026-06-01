@@ -63,42 +63,6 @@ android {
         }
     }
 
-    sourceSets.getByName("main") {
-        java.setSrcDirs(listOf("src/main/kotlin"))
-    }
-
-    sourceSets.getByName("dev") {
-        java.setSrcDirs(listOf("src/dev/kotlin"))
-    }
-
-    sourceSets.getByName("final") {
-        java.setSrcDirs(listOf("src/final/kotlin"))
-    }
-
-    sourceSets.getByName("test") {
-        java.setSrcDirs(listOf("src/test/kotlin"))
-    }
-
-    sourceSets.getByName("testDev") {
-        java.setSrcDirs(listOf("src/testDev/kotlin"))
-    }
-
-    sourceSets.getByName("testFinal") {
-        java.setSrcDirs(listOf("src/testFinal/kotlin"))
-    }
-
-    sourceSets.getByName("androidTest") {
-        java.setSrcDirs(listOf("src/androidTest/kotlin"))
-    }
-
-    sourceSets.getByName("androidTestDev") {
-        java.setSrcDirs(listOf("src/androidTestDev/kotlin"))
-    }
-
-    sourceSets.getByName("androidTestFinal") {
-        java.setSrcDirs(listOf("src/androidTestFinal/kotlin"))
-    }
-
     buildFeatures {
         buildConfig = true
         viewBinding = true
