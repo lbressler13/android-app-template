@@ -24,17 +24,6 @@ repositories {
     }
 }
 
-fun getEspressoRetries(): Int {
-    val defaultRetries = 0
-
-    return if (project.hasProperty("espressoRetries")) {
-        val espressoRetries: String? by project
-        espressoRetries?.toIntOrNull() ?: defaultRetries
-    } else {
-        defaultRetries
-    }
-}
-
 android {
     namespace = "xyz.lbres.androidapptemplate"
     compileSdk = 36
@@ -45,8 +34,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
-
-        buildConfigField("int", "ESPRESSO_RETRIES", getEspressoRetries().toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
@@ -179,9 +166,6 @@ dependencies {
     testImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
     testImplementation("androidx.test.ext:junit-ktx:$androidxJunitVersion")
     testImplementation("org.robolectric:robolectric:$robolectricVersion")
-    androidTestImplementation("androidx.test.ext:junit:$androidxJunitVersion")
-    androidTestImplementation("androidx.test:rules:$androidxTestRulesVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
