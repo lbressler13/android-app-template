@@ -12,7 +12,6 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.containsString
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
-import xyz.lbres.androidapptemplate.ui.testutils.assertLinkOpened
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.actionOnChildWithId
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.clickLinkInText

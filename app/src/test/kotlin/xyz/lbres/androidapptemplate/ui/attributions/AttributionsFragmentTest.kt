@@ -30,7 +30,6 @@ import xyz.lbres.androidapptemplate.ProductFlavor
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.testutils.hideDevToolsButton
 import xyz.lbres.androidapptemplate.ui.attributions.constants.authorAttributions
-import xyz.lbres.androidapptemplate.ui.testutils.assertLinkOpened
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.clickLinkInText
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.forceClick

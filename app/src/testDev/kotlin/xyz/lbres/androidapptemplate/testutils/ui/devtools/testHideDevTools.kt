@@ -27,20 +27,23 @@ private val spinner = onViewInDialog(withId(R.id.devToolsTimeSpinner))
 private val hideDevToolsButton = onViewInDialog(withId(R.id.hideDevToolsButton))
 private val devToolsButton = onView(withId(R.id.devToolsButton))
 
+private val hideTimes = listOf(5000L, 10000L, 30000L, 60000L)
+
 fun testHideDevToolsOptionsDisplayed() {
     openDevTools()
 
-    spinner.check(matches(withSpinnerText("5000ms"))).perform(click())
+    spinner.check(matches(withSpinnerText("${hideTimes.first()}ms"))).perform(click())
 
-    spinnerItemAt(0).check(matches(allOf(isDisplayed(), withText("5000ms"))))
-    spinnerItemAt(1).check(matches(allOf(isDisplayed(), withText("10000ms"))))
-    spinnerItemAt(2).check(matches(allOf(isDisplayed(), withText("30000ms"))))
-    spinnerItemAt(3).check(matches(allOf(isDisplayed(), withText("60000ms"))))
+    hideTimes.forEachIndexed { index, time ->
+        runWithFailMessage("Checking text at index $index") {
+            spinnerItemAt(index).check(matches(allOf(isDisplayed(), withText("${time}ms"))))
+        }
+    }
 
     var performException = false
     try {
-        spinnerItemAt(4).check(matches(isDisplayed()))
-    } catch (e: PerformException) {
+        spinnerItemAt(hideTimes.size).check(matches(isDisplayed()))
+    } catch (_: PerformException) {
         performException = true
     }
 
@@ -54,34 +57,27 @@ fun testHideDevToolsOptionsDisplayed() {
 fun testInteractWithHideDevToolsSpinner() {
     openDevTools()
 
-    spinner.perform(click())
-    spinnerItemAt(1).perform(click())
-    spinner.check(matches(withSpinnerText("10000ms")))
-
-    spinner.perform(click())
-    spinnerItemAt(0).perform(click())
-    spinner.check(matches(withSpinnerText("5000ms")))
-
-    spinner.perform(click())
-    spinnerItemAt(2).perform(click())
-    spinner.check(matches(withSpinnerText("30000ms")))
-
-    spinner.perform(click())
-    spinnerItemAt(3).perform(click())
-    spinner.check(matches(withSpinnerText("60000ms")))
+    val checkOrder = listOf(1, 0, 2, 3)
+    checkOrder.forEach {
+        runWithFailMessage("Interacting with index $it") {
+            spinner.perform(click())
+            spinnerItemAt(it).perform(click())
+            val time = hideTimes[it]
+            spinner.check(matches(withSpinnerText("${time}ms")))
+        }
+    }
 
     // close and re-open dialog
     closeDialog()
     openDevTools()
-    spinner.check(matches(withSpinnerText("60000ms")))
+    spinner.check(matches(withSpinnerText("${hideTimes.last()}ms")))
 }
 
 fun testHideDevTools() {
-    val hideTimes = listOf(5000L, 10000L, 30000L, 60000L)
     val buffer = 500L
 
     hideTimes.forEachIndexed { index, time ->
-        runWithFailMessage("Checking duration $time at index $index") {
+        runWithFailMessage("Hiding for duration $time at index $index") {
             openDevTools()
             spinner.perform(click())
             spinnerItemAt(index).perform(click())
