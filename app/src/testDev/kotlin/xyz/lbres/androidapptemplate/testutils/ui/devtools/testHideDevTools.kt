@@ -20,6 +20,7 @@ import org.robolectric.shadows.ShadowDialog
 import org.robolectric.shadows.ShadowLooper
 import xyz.lbres.androidapptemplate.R
 import xyz.lbres.androidapptemplate.ui.testutils.onViewInDialog
+import java.util.concurrent.TimeUnit
 
 private val spinner = onViewInDialog(withId(R.id.devToolsTimeSpinner))
 private val hideDevToolsButton = onViewInDialog(withId(R.id.hideDevToolsButton))
@@ -118,21 +119,14 @@ fun testHideDevTools() {
  * @param hideTime [Long]: the expected time for the button to be hidden, in ms
  */
 private fun checkDevToolsHidden(hideTime: Long) {
+    val shadowLooper = ShadowLooper.shadowMainLooper()
     val dialog = ShadowDialog.getLatestDialog()
     assertFalse(dialog.isShowing)
-    ShadowLooper.runMainLooperToNextTask()
     devToolsButton.check(matches(not(isDisplayed())))
-    Thread.sleep(hideTime - 2000)
+    shadowLooper.idleFor(hideTime - 2000, TimeUnit.MILLISECONDS)
     devToolsButton.check(matches(not(isDisplayed())))
-    Thread.sleep(4000)
+    shadowLooper.idleFor(4000, TimeUnit.MILLISECONDS)
     devToolsButton.check(matches(isDisplayed()))
-
-//    onView(withText("Developer Tools")).check(doesNotExist())
-//    devToolsButton.check(matches(not(isDisplayed())))
-//    Thread.sleep(hideTime - 2000)
-//    devToolsButton.check(matches(not(isDisplayed())))
-//    Thread.sleep(4000)
-//    devToolsButton.check(matches(isDisplayed()))
 }
 
 /**
