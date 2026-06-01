@@ -19,6 +19,7 @@ import org.junit.Assert.assertFalse
 import org.robolectric.shadows.ShadowDialog
 import org.robolectric.shadows.ShadowLooper
 import xyz.lbres.androidapptemplate.R
+import xyz.lbres.androidapptemplate.testutils.runWithFailMessage
 import xyz.lbres.androidapptemplate.ui.testutils.onViewInDialog
 import java.util.concurrent.TimeUnit
 
@@ -76,57 +77,29 @@ fun testInteractWithHideDevToolsSpinner() {
 }
 
 fun testHideDevTools() {
-    devToolsButton.check(matches(isDisplayed()))
-    openDevTools()
+    val hideTimes = listOf(5000L, 10000L, 30000L, 60000L)
+    val buffer = 500L
 
-    // 5 seconds
-    spinner.check(matches(withSpinnerText("5000ms")))
-    hideDevToolsButton.perform(click())
-    checkDevToolsHidden(5000)
+    hideTimes.forEachIndexed { index, time ->
+        runWithFailMessage("Checking duration $time at index $index") {
+            openDevTools()
+            spinner.perform(click())
+            spinnerItemAt(index).perform(click())
+            spinner.check(matches(withSpinnerText("${time}ms")))
+            hideDevToolsButton.perform(click())
 
-    openDevTools()
+            // check that dialog is not showing
+            val dialog = ShadowDialog.getLatestDialog()
+            assertFalse(dialog.isShowing)
 
-    // 10 seconds
-    spinner.perform(click())
-    spinnerItemAt(1).perform(click())
-    spinner.check(matches(withSpinnerText("10000ms")))
-    hideDevToolsButton.perform(click())
-    checkDevToolsHidden(10000)
-
-    openDevTools()
-
-    // 30 seconds
-    spinner.perform(click())
-    spinnerItemAt(2).perform(click())
-    spinner.check(matches(withSpinnerText("30000ms")))
-    hideDevToolsButton.perform(click())
-    checkDevToolsHidden(30000)
-
-    openDevTools()
-
-    // 60 seconds
-    spinner.perform(click())
-    spinnerItemAt(3).perform(click())
-    spinner.check(matches(withSpinnerText("60000ms")))
-    hideDevToolsButton.perform(click())
-    checkDevToolsHidden(60000)
-}
-
-/**
- * Check that the dev tools button is hidden and remains hidden for a certain amount of time.
- * One second buffer in either direction to account for time needed to check if views are visible.
- *
- * @param hideTime [Long]: the expected time for the button to be hidden, in ms
- */
-private fun checkDevToolsHidden(hideTime: Long) {
-    val shadowLooper = ShadowLooper.shadowMainLooper()
-    val dialog = ShadowDialog.getLatestDialog()
-    assertFalse(dialog.isShowing)
-    devToolsButton.check(matches(not(isDisplayed())))
-    shadowLooper.idleFor(hideTime - 2000, TimeUnit.MILLISECONDS)
-    devToolsButton.check(matches(not(isDisplayed())))
-    shadowLooper.idleFor(4000, TimeUnit.MILLISECONDS)
-    devToolsButton.check(matches(isDisplayed()))
+            val shadowLooper = ShadowLooper.shadowMainLooper()
+            devToolsButton.check(matches(not(isDisplayed())))
+            shadowLooper.idleFor(time - buffer, TimeUnit.MILLISECONDS)
+            devToolsButton.check(matches(not(isDisplayed())))
+            shadowLooper.idleFor(buffer * 2, TimeUnit.MILLISECONDS)
+            devToolsButton.check(matches(isDisplayed()))
+        }
+    }
 }
 
 /**
