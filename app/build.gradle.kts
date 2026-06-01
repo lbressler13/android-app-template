@@ -145,7 +145,6 @@ dependencies {
     val navigationVersion = "2.9.8"
 
     val androidxJunitVersion = "1.3.0"
-    val androidxTestRulesVersion = "1.7.0"
     val espressoVersion = "3.7.0"
     val robolectricVersion = "4.16.1"
 

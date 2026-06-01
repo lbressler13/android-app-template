@@ -205,7 +205,6 @@ class AttributionsFragmentTest {
         checkImagesNotPresented(listOf(0, 1))
 
         // expand some
-        hideDevToolsButton(0)
         onView(withId(R.id.expandCollapseMessage)).perform(click())
         expandCollapseAttribution(0)
 
