@@ -12,7 +12,7 @@
 ## Overview
 
 This is a template for creating an Android app with two build flavors.
-It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog. 
+It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog.
 This dialog can easily be augmented with app-specific functionality, such as erasing data from ViewModels.
 
 The code in this template is inspired by other repos that share functionality, tests, and utils, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
@@ -47,7 +47,7 @@ See [here](https://docs.github.com/en/packages/working-with-a-github-packages-re
 
 ### Unit Tests
 
-Unit tests are implemented using the Kotlin test library. 
+Unit tests are implemented using the Kotlin test library.
 See [here](https://kotlinlang.org/api/latest/kotlin.test/) for information about the library.
 
 Unit tests can be run via an IDE, or with the following command:
@@ -107,7 +107,7 @@ These need to be updated in the following tests:
 
 The template contains 3 workflows. The first workflow runs basic checks, such as linting and unit tests.
 The second workflow runs Espresso tests, and the third workflow runs both the first and second one.
-The third workflow is triggered automatically on pushes to the main branch. 
+The third workflow is triggered automatically on pushes to the main branch.
 However, Espresso tests use a large number of GitHub actions minutes, due to the amount of time they take and the OS they run on.
 If there are restrictions on the minutes available, you should consider removing the Espresso step or disabling the automatic trigger for that workflow.
 
@@ -158,3 +158,5 @@ The list is also available within the template under the `ui.attributions` packa
 | ![img](app/src/main/res/drawable-hdpi/ic_settings.png)      | Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from <https://www.flaticon.com>                           | <https://www.flaticon.com/premium-icon/gear_484613>                   |
 
 See [here](https://support.flaticon.com/s/article/Attribution-How-when-and-where-FI?language=en_US&Id=ka03V0000004Q5lQAE) for more information about Flaticon attributions.
+
+empty
