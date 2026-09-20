@@ -159,4 +159,3 @@ The list is also available within the template under the `ui.attributions` packa
 
 See [here](https://support.flaticon.com/s/article/Attribution-How-when-and-where-FI?language=en_US&Id=ka03V0000004Q5lQAE) for more information about Flaticon attributions.
 
-empty
