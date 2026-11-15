@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
-import xyz.lbres.kotlinutils.general.simpleIf
+import xyz.lbres.kotlinutils.utils.simpleIf
 
 /**
  * [Matcher] to apply [vhMatcher] to a ViewHolder in a RecyclerView, at the given position

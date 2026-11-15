@@ -30,7 +30,7 @@ android {
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
-        minSdk = 34
+        minSdk = 33
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
@@ -102,11 +102,11 @@ dependencies {
     val kotlinVersion: String by rootProject.extra
 
     val androidxCoreVersion = "1.18.0"
-    val appCompatVersion = "1.7.1"
-    val constraintLayoutVersion = "2.2.1"
-    val kotlinUtilsVersion = "1.3.4"
-    val lifecycleVersion = "2.10.0"
-    val navigationVersion = "2.9.8"
+    val appCompatVersion = "1.8.0"
+    val constraintLayoutVersion = "2.2.2"
+    val kotlinUtilsVersion = "2.1.0"
+    val lifecycleVersion = "2.11.0"
+    val navigationVersion = "2.10.2"
 
     val androidxJunitVersion = "1.3.0"
     val espressoVersion = "3.7.0"

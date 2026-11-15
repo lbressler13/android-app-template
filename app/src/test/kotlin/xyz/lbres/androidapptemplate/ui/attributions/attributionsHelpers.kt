@@ -21,7 +21,7 @@ import xyz.lbres.androidapptemplate.ui.testutils.matchers.isShown
 import xyz.lbres.androidapptemplate.ui.testutils.matchers.matchesAtPosition
 import xyz.lbres.androidapptemplate.ui.testutils.viewactions.actionOnChildWithId
 import xyz.lbres.androidapptemplate.ui.testutils.viewassertions.isNotPresented
-import xyz.lbres.kotlinutils.list.IntList
+import xyz.lbres.kotlinutils.collection.list.IntList
 import java.lang.AssertionError
 
 private val imageUrls = authorAttributions.map { it.images.map { it.url } }
