@@ -12,6 +12,7 @@ build
 captures
 .externalNativeBuild
 .cxx
+.kotlin
 
 # Local Files
 local.properties
