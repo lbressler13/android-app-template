@@ -110,7 +110,7 @@ dependencies {
 
     val androidxJunitVersion = "1.3.0"
     val espressoVersion = "3.7.0"
-    val robolectricVersion = "4.16.1"
+    val robolectricVersion = "4.18"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
