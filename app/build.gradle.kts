@@ -70,6 +70,12 @@ android {
 
     testOptions {
         animationsDisabled = true
+        // resolves mockk issue: https://github.com/mockk/mockk/issues/297
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
         unitTests {
             // needed for robolectric
             isIncludeAndroidResources = true
@@ -79,34 +85,22 @@ android {
                     val testType: String? by project
                     when (testType?.lowercase()) {
                         "unit" -> excludeCategories("org.robolectric.Robolectric")
-                        "robolectric" -> {
-                            test.jvmArgs(
-                                "--add-opens=java.base/java.lang=ALL-UNNAMED",
-                                "--add-opens=java.base/java.util=ALL-UNNAMED",
-                                "--add-opens=java.base/java.io=ALL-UNNAMED",
-                                "--add-opens=java.base/java.net=ALL-UNNAMED",
-                                "--add-opens=java.base/java.security=ALL-UNNAMED",
-                                "--add-opens=java.base/java.text=ALL-UNNAMED",
-                                "--add-opens=java.base/jdk.internal.access=ALL-UNNAMED",
-                                "--add-opens=java.desktop/java.awt.font=ALL-UNNAMED",
-                                "--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
-                            )
-                            includeCategories("org.robolectric.Robolectric")
-                        }
+                        "robolectric" -> includeCategories("org.robolectric.Robolectric")
                     }
                 }
+                test.maxHeapSize = "1024m"
             }
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JvmTarget.fromTarget("17")
+            jvmTarget = JvmTarget.fromTarget("21")
         }
     }
 }
@@ -115,11 +109,11 @@ dependencies {
     val kotlinVersion: String by rootProject.extra
 
     val androidxCoreVersion = "1.18.0"
-    val appCompatVersion = "1.8.0"
-    val constraintLayoutVersion = "2.2.2"
+    val appCompatVersion = "1.7.1"
+    val constraintLayoutVersion = "2.2.1"
     val kotlinUtilsVersion = "2.1.0"
     val lifecycleVersion = "2.11.0"
-    val navigationVersion = "2.10.2"
+    val navigationVersion = "2.9.8"
 
     val androidxJunitVersion = "1.3.0"
     val espressoVersion = "3.7.0"
