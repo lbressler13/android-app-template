@@ -1,6 +1,6 @@
 # Android App Template
 
-[![All Checks](https://github.com/lbressler13/android-app-template/actions/workflows/all_checks.yml/badge.svg?branch=main)](https://github.com/lbressler13/android-app-template/actions/workflows/all_checks.yml)
+[![Lint and Test](.github/workflows/lint_test.yml)](https://github.com/lbressler13/android-app-template/actions/workflows/lint_and_test.yml)
 
 - [Overview](#overview)
 - [Testing](#testing)
@@ -12,7 +12,7 @@
 ## Overview
 
 This is a template for creating an Android app with two build flavors.
-It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog. 
+It also contains a pre-made fragment to list icons that are used in the app, and a basic developer tools dialog.
 This dialog can easily be augmented with app-specific functionality, such as erasing data from ViewModels.
 
 The code in this template is inspired by other repos that share functionality, tests, and utils, including the [Trick Calculator](https://github.com/lbressler13/trick-calculator) app.
@@ -45,27 +45,20 @@ See [here](https://docs.github.com/en/packages/working-with-a-github-packages-re
 
 ## Testing
 
-### Unit Tests
-
-Unit tests are implemented using the Kotlin test library. 
+Unit tests are implemented using the Kotlin test library.
 See [here](https://kotlinlang.org/api/latest/kotlin.test/) for information about the library.
 
-Unit tests can be run via an IDE, or with the following command:
-```./gradlew test```
+Integration tests are implemented using the [Espresso](https://developer.android.com/training/testing/espresso) framework with [Robolectric](https://robolectric.org/).
+This allows integration tests to run without a physical device or emulator.
 
-### UI Tests
+Tests can be run with the following commands:
+- Unit tests: `./gradlew test -PtestType=unit`
+- Integrated tests: `./gradlew test -PtestType=robolectric`
+- All tests: `./gradlew test`
 
-UI tests are implemented using the Espresso framework.
-Tests can be configured for an individual build flavor, or can be shared across flavors.
-The template has pre-existing tests for the image attributions fragment and developer tools dialog.
+Tests can also be run by build type and variant, such as `./gradlew testDevDebugUnitTest -PtestType=robolectric`
 
-Tests can be run via an IDE, or with the following commands:
-* All tests for both flavors: `./gradlew connectedCheck`
-* Dev build flavor only: `./gradlew connectedDevDebugAndroidTest`
-* Final build flavor only: `./gradlew connectedFinalDebugAndroidTest`
-
-Espresso tests must be run on a physical device or an emulator.
-See [here](https://developer.android.com/training/testing/espresso) for more information about testing with Espresso.
+See the Android docs for more information on testing with [Espresso](https://developer.android.com/training/testing/espresso) and [Robolectric](https://developer.android.com/training/testing/local-tests/robolectric).
 
 ## Linting
 
@@ -99,20 +92,8 @@ The name also needs to be changed in the following places:
 
 The UI tests look at package name and action bar title.
 These need to be updated in the following tests:
-- [ ] BaseActivityTest, under useAppContext for both build variants
 - [ ] HomeFragmentTest, under actionBarTitle
 - [ ] AttributionsFragmentTest, under closeButton
-
-### Workflows
-
-The template contains 3 workflows. The first workflow runs basic checks, such as linting and unit tests.
-The second workflow runs Espresso tests, and the third workflow runs both the first and second one.
-The third workflow is triggered automatically on pushes to the main branch. 
-However, Espresso tests use a large number of GitHub actions minutes, due to the amount of time they take and the OS they run on.
-If there are restrictions on the minutes available, you should consider removing the Espresso step or disabling the automatic trigger for that workflow.
-
-All three workflows use gradlew to execute commands.
-You may need to run `git update-index --chmod=+x ./gradlew` to grant executable permissions in GitHub actions.
 
 ## Project Structure
 
@@ -122,9 +103,6 @@ You may need to run `git update-index --chmod=+x ./gradlew` to grant executable 
 ├── app
 │   ├── src
 │   │   ├── dev             <-- code and resources that are specific to dev product flavor
-│   │   ├── espresso        <-- UI tests
-│   │   ├── espressoDev     <-- UI tests that are specific to dev product flavor
-│   │   ├── espressoFinal   <-- UI tests that are specific to final product flavor
 │   │   ├── final           <-- code and resources that are specific to final product flavor
 │   │   ├── main
 │   │   │   ├── kotlin      <-- main source code
@@ -133,7 +111,9 @@ You may need to run `git update-index --chmod=+x ./gradlew` to grant executable 
 │   │   │   │   ├── utils   <-- shared utility functions
 │   │   │   ├── res         <-- app resources, including strings, layouts, and images
 │   │   │   ├── AndroidManifest.xml   <-- app manifest file
-│   │   ├── test            <-- unit tests
+│   │   ├── test            <-- main test source
+│   │   │   ├── ui          <-- UI tests
+│   │   ├── testDev         <-- tests that are specific to dev product flavor
 │   ├── build.gradle.kts    <-- module level gradle file, contains app dependencies
 ├── build.gradle.kts        <-- project level gradle file
 ├── gradle.properties

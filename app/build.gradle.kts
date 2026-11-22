@@ -1,7 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1" // ktlint
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 }
 
 val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
@@ -22,29 +24,16 @@ repositories {
     }
 }
 
-fun getEspressoRetries(): Int {
-    val defaultRetries = 0
-
-    return if (project.hasProperty("espressoRetries")) {
-        val espressoRetries: String? by project
-        espressoRetries?.toIntOrNull() ?: defaultRetries
-    } else {
-        defaultRetries
-    }
-}
-
 android {
     namespace = "xyz.lbres.androidapptemplate"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
-        minSdk = 29 // maximum sdk available in tester used in github actions
-        targetSdk = 34
+        minSdk = 33
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
-
-        buildConfigField("int", "ESPRESSO_RETRIES", getEspressoRetries().toString())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
@@ -74,37 +63,6 @@ android {
         }
     }
 
-    sourceSets.getByName("main") {
-        java.setSrcDirs(listOf("src/main/kotlin"))
-    }
-
-    sourceSets.getByName("dev") {
-        java.setSrcDirs(listOf("src/dev/kotlin"))
-    }
-
-    sourceSets.getByName("final") {
-        java.setSrcDirs(listOf("src/final/kotlin"))
-    }
-
-    sourceSets.getByName("test") {
-        java.setSrcDirs(listOf("src/test/kotlin"))
-    }
-
-    sourceSets.getByName("androidTest") {
-        kotlin.setSrcDirs(listOf("src/espresso/kotlin"))
-        java.setSrcDirs(listOf("src/espresso/kotlin"))
-    }
-
-    sourceSets.getByName("androidTestDev") {
-        kotlin.setSrcDirs(listOf("src/espressoDev/kotlin"))
-        java.setSrcDirs(listOf("src/espressoDev/kotlin"))
-    }
-
-    sourceSets.getByName("androidTestFinal") {
-        kotlin.setSrcDirs(listOf("src/espressoFinal/kotlin"))
-        java.setSrcDirs(listOf("src/espressoFinal/kotlin"))
-    }
-
     buildFeatures {
         buildConfig = true
         viewBinding = true
@@ -112,32 +70,54 @@ android {
 
     testOptions {
         animationsDisabled = true
+        // resolves mockk issue: https://github.com/mockk/mockk/issues/297
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+        unitTests {
+            // needed for robolectric
+            isIncludeAndroidResources = true
+
+            all { test ->
+                test.useJUnit {
+                    val testType: String? by project
+                    when (testType?.lowercase()) {
+                        "unit" -> excludeCategories("org.robolectric.Robolectric")
+                        "robolectric" -> includeCategories("org.robolectric.Robolectric")
+                    }
+                }
+                test.maxHeapSize = "1024m"
+            }
+        }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.fromTarget("21")
+        }
     }
 }
 
 dependencies {
     val kotlinVersion: String by rootProject.extra
 
-    val androidxCoreVersion = "1.13.1"
-    val appCompatVersion = "1.7.0"
-    val constraintLayoutVersion = "2.1.4"
-    val kotlinUtilsVersion = "1.3.4"
-    val lifecycleVersion = "2.8.6"
-    val navigationVersion = "2.8.3"
+    val androidxCoreVersion = "1.18.0"
+    val appCompatVersion = "1.7.1"
+    val constraintLayoutVersion = "2.2.1"
+    val kotlinUtilsVersion = "2.1.0"
+    val lifecycleVersion = "2.11.0"
+    val navigationVersion = "2.9.8"
 
-    val androidxJunitVersion = "1.2.1"
-    val androidxTestRulesVersion = "1.6.1"
-    val androidxTestRunnerVersion = "1.6.2"
-    val espressoVersion = "3.6.1"
+    val androidxJunitVersion = "1.3.0"
+    val espressoVersion = "3.7.0"
+    val robolectricVersion = "4.16.1"
 
     implementation("androidx.core:core-ktx:$androidxCoreVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
@@ -151,12 +131,11 @@ dependencies {
 
     // testing
     testImplementation(kotlin("test"))
-    androidTestImplementation("androidx.test.ext:junit:$androidxJunitVersion")
-    androidTestImplementation("androidx.test:rules:$androidxTestRulesVersion")
-    androidTestImplementation("androidx.test:runner:$androidxTestRunnerVersion") // needed to run on emulator
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
+    testImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
+    testImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
+    testImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
+    testImplementation("androidx.test.ext:junit-ktx:$androidxJunitVersion")
+    testImplementation("org.robolectric:robolectric:$robolectricVersion")
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
