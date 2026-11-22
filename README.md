@@ -48,8 +48,8 @@ See [here](https://docs.github.com/en/packages/working-with-a-github-packages-re
 Unit tests are implemented using the Kotlin test library.
 See [here](https://kotlinlang.org/api/latest/kotlin.test/) for information about the library.
 
-Integrated tests are implemented using the [Espresso](https://developer.android.com/training/testing/espresso) framework with [Robolectric](https://robolectric.org/).
-This allows integrated tests to run without a physical device or emulator.
+Integration tests are implemented using the [Espresso](https://developer.android.com/training/testing/espresso) framework with [Robolectric](https://robolectric.org/).
+This allows integration tests to run without a physical device or emulator.
 
 Tests can be run with the following commands:
 - Unit tests: `./gradlew test -PtestType=unit`
@@ -92,20 +92,8 @@ The name also needs to be changed in the following places:
 
 The UI tests look at package name and action bar title.
 These need to be updated in the following tests:
-- [ ] BaseActivityTest, under useAppContext for both build variants
 - [ ] HomeFragmentTest, under actionBarTitle
 - [ ] AttributionsFragmentTest, under closeButton
-
-### Workflows
-
-The template contains 3 workflows. The first workflow runs basic checks, such as linting and unit tests.
-The second workflow runs Espresso tests, and the third workflow runs both the first and second one.
-The third workflow is triggered automatically on pushes to the main branch.
-However, Espresso tests use a large number of GitHub actions minutes, due to the amount of time they take and the OS they run on.
-If there are restrictions on the minutes available, you should consider removing the Espresso step or disabling the automatic trigger for that workflow.
-
-All three workflows use gradlew to execute commands.
-You may need to run `git update-index --chmod=+x ./gradlew` to grant executable permissions in GitHub actions.
 
 ## Project Structure
 
@@ -150,4 +138,3 @@ The list is also available within the template under the `ui.attributions` packa
 | ![img](app/src/main/res/drawable-hdpi/ic_settings.png)      | Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from <https://www.flaticon.com>                           | <https://www.flaticon.com/premium-icon/gear_484613>                   |
 
 See [here](https://support.flaticon.com/s/article/Attribution-How-when-and-where-FI?language=en_US&Id=ka03V0000004Q5lQAE) for more information about Flaticon attributions.
-
