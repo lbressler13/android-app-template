@@ -126,7 +126,6 @@ You may need to run `git update-index --chmod=+x ./gradlew` to grant executable 
 │   │   ├── test            <-- main test source
 │   │   │   ├── ui          <-- UI tests
 │   │   ├── testDev         <-- tests that are specific to dev product flavor
-│   │   ├── testFinal       <-- tests that are specific to final product flavor
 │   ├── build.gradle.kts    <-- module level gradle file, contains app dependencies
 ├── build.gradle.kts        <-- project level gradle file
 ├── gradle.properties
