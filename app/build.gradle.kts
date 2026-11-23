@@ -116,7 +116,6 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
 
-
     // testing
     testImplementation(kotlin("test"))
     testImplementation(libs.espresso.contrib)
