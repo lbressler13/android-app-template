@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose)
     alias(libs.plugins.ktlint)
 }
 
@@ -24,14 +24,20 @@ repositories {
     }
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("21")
+    }
+}
+
 android {
     namespace = "xyz.lbres.androidapptemplate"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "xyz.lbres.androidapptemplate"
         minSdk = 33
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0.0"
 
@@ -42,6 +48,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -66,6 +73,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        compose = true
     }
 
     testOptions {
@@ -82,7 +90,7 @@ android {
 
             all { test ->
                 test.useJUnit {
-                    val testType: String? by project
+                    val testType = project.property("testType")?.toString()
                     when (testType?.lowercase()) {
                         "unit" -> excludeCategories("org.robolectric.Robolectric")
                         "robolectric" -> includeCategories("org.robolectric.Robolectric")
@@ -97,20 +105,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.fromTarget("21")
-        }
-    }
 }
 
 dependencies {
+    val composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.preview)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.ktx)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.utils)
+    implementation(libs.lifecycle.compose)
     implementation(libs.lifecycle.livedata)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.navigation.fragment)
@@ -118,11 +126,13 @@ dependencies {
 
     // testing
     testImplementation(kotlin("test"))
+    testImplementation(libs.compose.junit)
     testImplementation(libs.espresso.contrib)
     testImplementation(libs.espresso.core)
     testImplementation(libs.espresso.intents)
     testImplementation(libs.junit.ktx)
     testImplementation(libs.robolectric)
+    debugImplementation(libs.compose.manifest) // TODO verify if needed
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {

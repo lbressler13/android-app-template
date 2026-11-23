@@ -1,14 +1,15 @@
 [versions]
-kotlin = "2.2.0"
+kotlin = "2.4.21"
 
-android-gradle-plugin = "8.12.3"
-kotlin-android = "2.4.21"
+android-gradle-plugin = "9.5.2"
+#noinspection NewerVersionAvailable
 ktlint = "12.1.1"
 
+compose-bom = "2026.09.00"
 androidx-core = "1.18.0"
 appcompat = "1.8.0"
 constraintlayout = "2.2.2"
-kotlinUtils = "2.1.0"
+kotlin-utils = "2.1.0"
 lifecycle = "2.11.1"
 navigation = "2.10.2"
 
@@ -18,15 +19,21 @@ robolectric = "4.16.1"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
-kotlin-utils = { group = "xyz.lbres", name = "kotlin-utils", version.ref = "kotlinUtils" }
+kotlin-utils = { group = "xyz.lbres", name = "kotlin-utils", version.ref = "kotlin-utils" }
+lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
 
+compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espresso" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espresso" }
@@ -35,5 +42,5 @@ robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-android" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
