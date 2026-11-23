@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ktlint)
 }
 
@@ -106,19 +106,21 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.ktx)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.utils)
     implementation(libs.lifecycle.livedata)
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    implementation(libs.custom.kotlinutils)
+
 
     // testing
     testImplementation(kotlin("test"))
-    testImplementation(libs.espresso.core)
     testImplementation(libs.espresso.contrib)
+    testImplementation(libs.espresso.core)
     testImplementation(libs.espresso.intents)
     testImplementation(libs.junit.ktx)
     testImplementation(libs.robolectric)

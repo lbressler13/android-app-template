@@ -1,17 +1,7 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
-    val kotlinVersion by extra { "2.2.0" }
-    val gradleVersion = "8.12.3"
-
-    // only project-level dependencies, app-specific dependencies should go in application build files
-    dependencies {
-        classpath("com.android.tools.build:gradle:$gradleVersion")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.ktlint) apply false
 }
 
 tasks.register("clean", Delete::class) {
