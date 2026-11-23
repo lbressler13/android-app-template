@@ -1,6 +1,8 @@
 [versions]
-androidGradle = "8.12.3"
+androidGradlePlugin = "8.12.3"
 kotlin = "2.2.0"
+
+ktlint = "12.1.1"
 
 androidxCore = "1.18.0"
 appCompat = "1.7.1"
@@ -30,3 +32,4 @@ junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "an
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 
 [plugins]
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }

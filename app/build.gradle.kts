@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    alias(libs.plugins.ktlint)
 }
 
 val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
