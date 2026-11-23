@@ -5,31 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:paddingHorizontal="20dp"
-        android:text="@string/welcome_message"
-        android:textColor="?colorOnBackground"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
-    <ImageButton
-        android:id="@+id/infoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="@string/info_cd"
-        android:paddingEnd="@dimen/corner_icon_padding"
-        android:paddingBottom="@dimen/corner_icon_padding"
-        android:src="@drawable/ic_info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="?colorOnBackground"
-        tools:ignore="RtlSymmetry" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:paddingHorizontal="20dp"-->
+<!--        android:text="@string/welcome_message"-->
+<!--        android:textColor="?colorOnBackground"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/infoButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@null"-->
+<!--        android:contentDescription="@string/info_cd"-->
+<!--        android:paddingEnd="@dimen/corner_icon_padding"-->
+<!--        android:paddingBottom="@dimen/corner_icon_padding"-->
+<!--        android:src="@drawable/ic_info"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:tint="?colorOnBackground"-->
+<!--        tools:ignore="RtlSymmetry" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

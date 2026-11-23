@@ -113,7 +113,6 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.preview)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.ktx)
     implementation(libs.kotlin.stdlib)
@@ -123,6 +122,11 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
+    // android preview support
+    // TODO can these both be debug?
+    implementation(libs.androidx.compose.tooling.preview)
+    debugImplementation(libs.androidx.compose.tooling)
 
     // testing
     testImplementation(kotlin("test"))
