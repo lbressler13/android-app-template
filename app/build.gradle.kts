@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ktlint)
 }
 
 val githubUsername: String? = project.findProperty("github.username")?.toString() ?: System.getenv("USERNAME")
@@ -106,36 +106,23 @@ android {
 }
 
 dependencies {
-    val kotlinVersion: String by rootProject.extra
-
-    val androidxCoreVersion = "1.18.0"
-    val appCompatVersion = "1.7.1"
-    val constraintLayoutVersion = "2.2.1"
-    val kotlinUtilsVersion = "2.1.0"
-    val lifecycleVersion = "2.11.0"
-    val navigationVersion = "2.9.8"
-
-    val androidxJunitVersion = "1.3.0"
-    val espressoVersion = "3.7.0"
-    val robolectricVersion = "4.16.1"
-
-    implementation("androidx.core:core-ktx:$androidxCoreVersion")
-    implementation("androidx.appcompat:appcompat:$appCompatVersion")
-    implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion")
-    implementation("xyz.lbres:kotlin-utils:$kotlinUtilsVersion")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.ktx)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.utils)
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     // testing
     testImplementation(kotlin("test"))
-    testImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
-    testImplementation("androidx.test.espresso:espresso-intents:$espressoVersion")
-    testImplementation("androidx.test.espresso:espresso-contrib:$espressoVersion")
-    testImplementation("androidx.test.ext:junit-ktx:$androidxJunitVersion")
-    testImplementation("org.robolectric:robolectric:$robolectricVersion")
+    testImplementation(libs.espresso.contrib)
+    testImplementation(libs.espresso.core)
+    testImplementation(libs.espresso.intents)
+    testImplementation(libs.junit.ktx)
+    testImplementation(libs.robolectric)
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
