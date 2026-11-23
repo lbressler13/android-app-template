@@ -90,7 +90,7 @@ android {
 
             all { test ->
                 test.useJUnit {
-                    val testType = project.property("testType")?.toString()
+                    val testType = project.findProperty("testType")?.toString()
                     when (testType?.lowercase()) {
                         "unit" -> excludeCategories("org.robolectric.Robolectric")
                         "robolectric" -> includeCategories("org.robolectric.Robolectric")
@@ -126,6 +126,7 @@ dependencies {
 
     // testing
     testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-junit"))
     testImplementation(libs.compose.junit)
     testImplementation(libs.espresso.contrib)
     testImplementation(libs.espresso.core)
