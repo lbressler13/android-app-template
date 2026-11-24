@@ -1,6 +1,5 @@
 package xyz.lbres.androidapptemplate.ui.home
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,12 +21,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import xyz.lbres.androidapptemplate.NavDestinations
 import xyz.lbres.androidapptemplate.R
 
 
-@Preview
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
+    // val navController = rememberNavController()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -38,7 +40,7 @@ fun HomeScreen() {
             // TODO is theme needed?
             MaterialTheme {
                 GreetingMessage()
-                InfoButton()
+                InfoButton(navController)
             }
         }
     }
@@ -66,13 +68,11 @@ fun GreetingMessage() {
 }
 
 @Composable
-fun InfoButton() {
+fun InfoButton(navController: NavController) {
     val padding = dimensionResource(R.dimen.corner_icon_padding)
     Box(modifier = Modifier.fillMaxSize()) {
         IconButton(
-            // TODO navigate to attr
-            // requireBaseActivity().runNavAction(R.id.navigateHomeToAttributions)
-            onClick = { Log.e(null, "info clicked") },
+            onClick = { navController.navigate(NavDestinations.Attributions.route) },
             modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = padding, end = padding),
         ) {
             Icon(

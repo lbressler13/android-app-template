@@ -108,9 +108,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.compose)
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
 
+    // implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.constraintlayout)

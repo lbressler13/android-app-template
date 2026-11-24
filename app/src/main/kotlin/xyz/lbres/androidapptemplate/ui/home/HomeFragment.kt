@@ -13,9 +13,9 @@ import xyz.lbres.androidapptemplate.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
-            .apply {
-                composeView.setContent { HomeScreen() }
-            }
+//            .apply {
+//                composeView.setContent { HomeScreen() }
+//            }
         return binding.root
     }
 }
